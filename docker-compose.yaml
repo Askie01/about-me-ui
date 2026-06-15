@@ -1,6 +1,9 @@
 services:
 
   about-me-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: "askie01/about-me-ui:latest"
     container_name: "about-me-ui"
     ports:
