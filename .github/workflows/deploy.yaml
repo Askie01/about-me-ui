@@ -31,9 +31,12 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_SSH_PORT || 22 }}
           script: |
-            IMAGE="ghcr.io/${{ github.repository_owner }}/about-me-ui:${{ inputs.image_tag }}"
+            IMAGE="ghcr.io/${{ github.repository_owner }}/about-me-ui:${{ inputs.image_tag || 'latest' }}"
             CONTAINER="${{ vars.CONTAINER_NAME }}"
             PORT="${{ vars.CONTAINER_PORT }}"
+
+            echo "==> Logging in to GHCR"
+            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ github.repository_owner }}" --password-stdin
 
             echo "==> Stopping container: $CONTAINER"
             docker stop "$CONTAINER" || true
