@@ -24,7 +24,7 @@ jobs:
           cache: maven
 
       - name: Run tests
-        run: ./mvnw test
+        run: sh mvnw test
 
       - name: Upload test reports
         if: always()

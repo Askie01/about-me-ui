@@ -26,7 +26,7 @@ jobs:
           cache: maven
 
       - name: Build JAR
-        run: ./mvnw package -DskipTests
+        run: sh mvnw package -DskipTests
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v4
