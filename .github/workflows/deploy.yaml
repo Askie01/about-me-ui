@@ -1,6 +1,10 @@
 name: Deploy
 
 on:
+  workflow_run:
+    workflows: [ "Publish" ]
+    types: [ completed ]
+    branches: [ "master" ]
   workflow_dispatch:
     inputs:
       image_tag:
@@ -9,13 +13,14 @@ on:
         default: 'latest'
 
 env:
-  IMAGE: ghcr.io/${{ github.repository_owner }}/about-me-ui:${{ inputs.image_tag }}
+  IMAGE: ghcr.io/${{ github.repository_owner }}/about-me-ui:${{ inputs.image_tag || 'latest' }}
 
 jobs:
   deploy:
     name: Deploy to VPS
     runs-on: ubuntu-latest
     environment: production
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Deploy via SSH
