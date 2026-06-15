@@ -8,6 +8,6 @@ RUN apt-get update \
 USER appuser
 WORKDIR /app
 
-COPY --chown=appuser:appuser target/*.jar /app/app.jar
+COPY --chown=appuser:appuser target/about-me-ui-0.0.1-SNAPSHOT.jar /app/app.jar
 
 ENTRYPOINT ["java","-jar","/app/app.jar"]
