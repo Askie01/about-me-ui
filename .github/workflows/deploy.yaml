@@ -51,6 +51,7 @@ jobs:
             docker run -d \
               --name "$CONTAINER" \
               --restart unless-stopped \
+              --network askie-solutions-network \
               -p "$PORT":8080 \
               "$IMAGE"
 
