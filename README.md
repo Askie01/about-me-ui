@@ -62,7 +62,7 @@ Using the Maven wrapper:
 ```
 
 Then open your browser and visit:
-http://localhost:8080
+http://localhost:8080/about-me/
 
 ---
 
