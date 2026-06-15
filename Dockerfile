@@ -10,4 +10,8 @@ WORKDIR /app
 
 COPY --chown=appuser:appuser target/about-me-ui-0.0.1-SNAPSHOT.jar /app/app.jar
 
+COPY --chown=appuser:appuser target/*.jar /app/app.jar
+
+EXPOSE 8080
+
 ENTRYPOINT ["java","-jar","/app/app.jar"]
