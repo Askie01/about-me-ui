@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(path = "/")
-public class AboutMeView {
+public class WelcomeView {
 
     @GetMapping
-    public String aboutMePage(Model model) {
+    public String welcomePage(Model model) {
         model.addAttribute("title", "About Me");
-        model.addAttribute("view", "pages/about");
+        model.addAttribute("view", "pages/welcome");
         return "layout/base";
     }
 }
